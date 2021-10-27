@@ -22,11 +22,11 @@
     <UpdatePeriodically>false</UpdatePeriodically>
     <UpdateRequired>false</UpdateRequired>
     <MapFileExtensions>true</MapFileExtensions>
-    <InstallUrl>https://digitalinteraction.gitlab.io/ax-deploy/deploy/</InstallUrl>
+    <InstallUrl>https://digitalinteraction.github.io/ax-deploy/deploy/</InstallUrl>
     <UpdateUrl>https://openlab.ncl.ac.uk/gitlab/public-pages/ax3-deploy/raw/master/deploy/</UpdateUrl>
     <CreateWebPageOnPublish>true</CreateWebPageOnPublish>
     <WebPage>publish.htm</WebPage>
-    <ApplicationRevision>31</ApplicationRevision>
+    <ApplicationRevision>32</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <CreateDesktopShortcut>true</CreateDesktopShortcut>
