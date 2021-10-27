@@ -1,6 +1,6 @@
 # Deploy
 
-This ZIP version does not require installation, and can be used with [command-line options](../README.md#command-line-configuration).
+This ZIP version does not require installation, and can be used with [command-line options](../..#command-line-configuration).
 
 Requires the .NET Framework 4.7.1 to be installed.
 
