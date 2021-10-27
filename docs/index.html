@@ -1,0 +1,190 @@
+<h1 id="ax3-downloaddeployment-software">AX3 Download/Deployment Software</h1>
+<h2 id="getting-started">Getting Started</h2>
+<h3 id="hardware">Hardware</h3>
+<!--
+For 3x laptops:
+
+* Connect laptop to power.
+
+* Connect 2x USB docks to power.
+
+* Connect 2x USB docks to the computer over USB.
+
+* Connect barcode scanner to the computer over USB.
+
+* Verify that the laptop has a working internet connection at all times (otherwise the laptop will not be able to upload the data files, and it does not have much spare capacity).
+-->
+<h3 id="installing-the-software">Installing the software</h3>
+<p>If the software is not already installed, it is available from: <a href="https://openlab.ncl.ac.uk/gitlab/public-pages/ax3-deploy/">https://openlab.ncl.ac.uk/gitlab/public-pages/ax3-deploy/</a>.<br />
+To install, click the <em>AX3 Deployment Tool Setup</em> link, and run the downloaded <em>setup.exe</em> program.<br />
+If told <em>Windows protected your PC</em> then click <em>More info</em> and <em>Run anyway</em> – you will also need to install the <em>AX3 Driver</em> from the same site. Finally, you will may want a configuration settings file <code>config.ini</code> placed into the folder <code>%USERPROFILE%\Documents\AX3</code>.</p>
+<!--
+> Sometimes, updates will automatically be installed when starting the application. 
+> Just follow the boxes and allow it to install, and then it will start with the updates.
+-->
+<h3 id="starting-the-software">Starting the software</h3>
+<p>Double-click the <em>Deploy</em> icon from the desktop (or press the <em>Start</em> button and type <code>Deploy</code> to find the launch shortcut):</p>
+<figure>
+<img src="images/launch-icon.png" alt="Deploy icon" /><figcaption aria-hidden="true">Deploy icon</figcaption>
+</figure>
+<h3 id="interface-overview">Interface Overview</h3>
+<p>The user interface is split into several areas:</p>
+<figure>
+<img src="images/interface-areas.png" alt="User interface" /><figcaption aria-hidden="true">User interface</figcaption>
+</figure>
+<ol type="1">
+<li><p><em>Configuration setting</em>: This should be scanned in by the barcode reader, but can be typed if needed.</p></li>
+<li><p><em>Configuration information</em>: Provides information, success messages, and error messages.</p></li>
+<li><p><em>Device details</em>: Lists each attached device grouped by status, including the device id, battery level and status detail.</p></li>
+<li><p><em>Diagnostic log</em>: Typically ignored in normal use, can be checked for further details in the event of a problem.</p></li>
+<li><p><em>Cloud upload progress</em>: which file it is uploading and how many other files are queued for upload.</p></li>
+<li><p><em>Available space</em>: the approximate number of downloads that the drive currently has capacity for.</p></li>
+</ol>
+<h3 id="device-status">Device Status</h3>
+<p>The status of a device will typically be listed in the software. The device’s LED colour also indicates its state, and may be useful to determine the status of a batch of connected devices at a glance. The following table shows the possible LED indications:</p>
+<table>
+<colgroup>
+<col style="width: 43%" />
+<col style="width: 30%" />
+<col style="width: 26%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">LED Colour</th>
+<th style="text-align: left;">Status</th>
+<th style="text-align: left;">Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span style="color: lightgray;">● <strong>White</strong></span></td>
+<td style="text-align: left;">Downloading</td>
+<td style="text-align: left;">The data from the device is downloading. You must wait for the download to complete. Afterwards, the device will be automatically cleared then enter the charging or charged category.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span style="color: cyan;">● <strong>Cyan</strong></span></td>
+<td style="text-align: left;">Recharging</td>
+<td style="text-align: left;">The device is cleared but not yet fully charged. Wait until the device is fully charged.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span style="color: magenta;">● <strong>Magenta</strong></span></td>
+<td style="text-align: left;">Charged</td>
+<td style="text-align: left;">The is fully charged (and cleared). This device can be configured now, or is ready to be removed for later configuration.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span style="color: cyan;">☼ <strong>Flashing Cyan/Off</strong></span></td>
+<td style="text-align: left;">Outbox</td>
+<td style="text-align: left;">The device is configured. Disconnect the flashing device, scan the barcode and place in the envelope.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span style="color: red;">● <strong>Red</strong></span></td>
+<td style="text-align: left;">Unexpected</td>
+<td style="text-align: left;">This device was not expected on the dock, as it has been configured for recording and that recording has not yet finished. If you are certain that the device was configured in error, use <em>Device</em> / <em>Destroy Recording</em> to manually clear it. The firmware may temporarily light the LED red while it is clearing or configuring.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span style="color: dodgerblue;">● <strong>Blue</strong></span></td>
+<td style="text-align: left;">Error</td>
+<td style="text-align: left;">There was a problem with communicating with, or downloading from the device. If it is a comms. error, press <code>F9</code>, <code>Y</code> to reset. If it is a download error, check the drive has enough free space (waiting for uploads to complete may free-up capacity).</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span style="color: gold;">● <strong>Yellow</strong></span> / <span style="color: green;">● <strong>Green</strong></span></td>
+<td style="text-align: left;">USB data error</td>
+<td style="text-align: left;">This device is not communicating with the computer (but is powered or fully charged). Check the hub’s connection and reconnect the device.</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span style="color: gold;">◍ <strong>Fading Yellow</strong></span> / <span style="color: lightgray;">◍ <strong>Fading White</strong></span></td>
+<td style="text-align: left;">Unclassified*</td>
+<td style="text-align: left;">This device has not been given a status by the software. If this persists, try reconnecting the device, restarting the computer and ensuring the drivers are installed.</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><span style="color: red;">☼ <strong>Flashing Red</strong></span></td>
+<td style="text-align: left;">Starting*</td>
+<td style="text-align: left;">The device is starting. Technically, either in a low-battery pre-charge state, or in the ‘bootloader’. If it persists and fails to start properly, then remove the device from circulation.</td>
+</tr>
+</tbody>
+</table>
+<p>(*) Devices in these states may not appear in the software.</p>
+<h2 id="operation-download-clearing-and-recharging">Operation: Download, Clearing and Recharging</h2>
+<p>Steps:</p>
+<ol type="1">
+<li><p>Fill all free spaces on the docks with devices from the <em>incoming</em> bucket.</p></li>
+<li><p>After the devices settle, you expect to see LEDs which are: <strong>white</strong> (downloading) and <strong>cyan</strong> (cleared and recharging). Downloading of 14 devices in parallel takes approximately 18 minutes, recharging could take a little longer.</p></li>
+<li><p>When devices turn <strong>magenta</strong> they are fully charged and should be removed to a <em>charged</em> bucket.</p></li>
+<li><p>If any devices turn <strong>blue</strong>: check if it is a download error (confirm the free space on the laptop, waiting for uploads to complete may free-up capacity), or a communication error (press <code>F9</code>, <code>Y</code> to reset these devices).</p></li>
+<li><p>Repeat from step 1 while devices remain in the <em>incoming</em> bucket.</p></li>
+</ol>
+<h2 id="operation-configuring">Operation: Configuring</h2>
+<p>Steps:</p>
+<ol type="1">
+<li><p>Fill free spaces on one or more docks with devices from the <em>charged</em> bucket.</p></li>
+<li><p>After the devices settle, you expect to mainly see LEDs which are <strong>magenta</strong> (charged), and perhaps some <strong>cyan</strong> (recharging).</p></li>
+<li><p>On a laptop with at least one <strong>magenta</strong> (charged) device, scan the barcode from the letter. The configuration numbers should appear at the top, and one of the devices (the most charged) will be configured and start to flash.</p></li>
+<li><p>Remove the flashing device from the dock.</p></li>
+<li><p>Scan the device you have removed (this double-checks the device is the configured one).</p></li>
+<li><p>Place the device in the envelope (with the letter).</p></li>
+<li><p>Repeat from step 3, or step 1 if you need more devices.</p></li>
+</ol>
+<h2 id="project-settings">Project Settings</h2>
+<p>This section is only relevant when initially configuring a project.</p>
+<h3 id="configuration-file">Configuration File</h3>
+<p>The initial working directory is <code>%USERPROFILE%\Documents\AX3</code>. The configuration file <code>config.ini</code> is loaded from that directory. If the working directory is changed (<code>workingdirectory=</code>), then any <code>config.ini</code> in that directory is also loaded.</p>
+<p>This is an example <code>config.ini</code> showing the available options (lines begining <code>#</code> are commented-out and therefore inactive):</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode ini"><code class="sourceCode ini"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Working directory (default is &quot;%USERPROFILE%\Documents\AX3&quot;)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#workingdirectory=C:\AX3</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Software title</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="dt">title</span><span class="ot">=</span><span class="st">Software Title</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="dt">welcome</span><span class="ot">=</span><span class="st">Welcome banner text (prefix ! for red, * for green)</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Detailed log window open by defalt</span></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="dt">log</span><span class="ot">=</span><span class="kw">true</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Require device ids to be scanned after configuration when disconnected</span></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="dt">scandevices</span><span class="ot">=</span><span class="kw">false</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="co"># File upload/synchronizer (to AWS)</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="dt">aws_region</span><span class="ot">=</span><span class="st">REGION</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="dt">aws_bucket</span><span class="ot">=</span><span class="st">BUCKET</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="dt">aws_key</span><span class="ot">=</span><span class="st">KEY</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="dt">aws_secret</span><span class="ot">=</span><span class="st">SECRET</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Back-end configure/download notification API</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="dt">api_url</span><span class="ot">=</span><span class="st">https://example.com</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="dt">pre_shared_key</span><span class="ot">=</span><span class="st">API_KEY</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Automatically delete downloaded files when they have been successfully uploaded</span></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="dt">delete</span><span class="ot">=</span><span class="kw">false</span></span></code></pre></div>
+<h3 id="command-line-configuration">Command-line configuration</h3>
+<p>Note that command-line options cannot be passed to the version installed from the setup tool as it is a “ClickOnce” installation – use the .ZIP version instead. For use to configure devices launched from another application, the deployment tool supports command-line options:</p>
+<ul>
+<li><code>--config &lt;config-code&gt;</code>
+<ul>
+<li>Where <code>&lt;config-code&gt;</code> is a configuration code as specified below</li>
+<li>Waits until one cleared and charged device has been configured and disconnected, then automatically exits
+<ul>
+<li>The program exit code will be set to the programmed device id.</li>
+</ul></li>
+<li>The program exit code is <code>0</code> if the program is exited before successfully configuring a device, or if the software is already running.</li>
+</ul></li>
+<li><code>--battery &lt;percentage&gt;</code> to change the default minimum battery percentage for a device (default 82%).</li>
+</ul>
+<h3 id="configuration-codes">Configuration codes</h3>
+<p>The configuration codes are typically represented in a machine-readable barcode or command-line option and consist of numbers separated by a letter prefix signifying the attribute being configured:</p>
+<ul>
+<li><code>s</code> - (default initial attribute) session identifier (up to 9 numeric digits, default 0)</li>
+<li><code>b</code> - required beginning/start time of the recording, one of the formats: <code>DD</code> (next occurrance of day-of-month including today; at midnight), <code>MMDD</code> (next occurance of month/day including today; at midnight), <code>MMDDhh</code> (next occurance of month/day including today; at the specified hour), <code>YYMMDDhh</code> (year is <code>20YY</code>; at the specified hour), <code>YYMMDDhhmm</code>, <code>YYMMDDhhmmss</code> (<code>ss</code> specified second), <code>YYYYMMDDhhmmss</code> (<code>YYYY</code> fully-specified year).</li>
+<li><code>d</code> - duration in hours (default 24 * 7 = 168; 7 days)</li>
+<li><code>r</code> - rate (default 100 Hz)</li>
+<li><code>g</code> - range (default +/- 8g)</li>
+</ul>
+<!--
+*  where config string contains one or more of of the configuration parts concatenated together:
+  * `b` to set the recording start time in the format `YYYYMMDDhhmmss`, e.g. `b20180217091500` (required). Also accepts the formats `YYMMDDhhmmss`, `YYMMDDhhmm` (Y=+2000, ss=00), `YYMMDDhh` (mm=00), `MMDDhh` (Y=current/next), `MMDD` (hh=00), `DD` (M=current/next)
+  * `d` to set the recording duration in hours, e.g. `d168` (default 168 hours)
+  * `s` to set the session ID (up to 9 digits), e.g. `s123456789` (default 0)
+  * `r` to set the sampling rate, e.g. `r100` (default 100 Hz)
+  * `g` to set the sampling range, e.g. `g8` (default +/- 8g)
+-->
+<p>As an example, the configuration code:</p>
+<pre><code>10042b1802170915</code></pre>
+<p>…signifies a session identifier <code>10042</code>, a start time of <code>09:15</code> on <code>17-Feb-2018</code>, a (default) duration of 168 hours (7 days), a (default) rate of 100 Hz, and a (default) range of +/-8g.</p>

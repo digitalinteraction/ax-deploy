@@ -1,0 +1,5 @@
+/bin
+/obj
+/publish
+/Deploy_TemporaryKey.pfx
+/*.user

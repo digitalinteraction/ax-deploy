@@ -1,0 +1,2 @@
+# ignore subdirectories (e.g. temporarily extracted .zip files)
+deploy_*/
